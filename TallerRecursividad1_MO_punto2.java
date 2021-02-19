@@ -1,26 +1,29 @@
 
 package tallerrecursividad1_mo;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TallerRecursividad1_MO_punto2 {
-public static boolean existe;
     public static void main(String[] args) {
         
         Scanner leer = new Scanner(System.in);
-        int n, m,pos;
+        Random rnd = new Random ();
+        int n,pos;
+        double m;
         
         System.out.println("Ingrese el tamaño correspondiente al vector: ");
         n = leer.nextInt();
         
         System.out.println("\n-----VECTOR GENERADO-----");
-        int[] vector = new int [n];
+        
+        double [] vector = new double [n];
         for(int i=0; i<vector.length;i++){
-            vector[i]=(int)((Math.random()*25+1));
+            vector[i]=Math.round((rnd.nextDouble()*30)*100.0)/100.0;
             System.out.print(vector[i]+" ");
         }
         
         System.out.println("\n\nIngrese el dato a buscar");
-        m=leer.nextInt();
+        m=leer.nextDouble();
         
         pos=funcion_Recursiva_HallarValor(vector, 0, m);
         
@@ -30,11 +33,9 @@ public static boolean existe;
         if(pos!=-1){
             System.out.println("El valor se encuentra entre los datos del vector en la posición "+pos);
         }
-        
-        
     }
     
-    public static int funcion_Recursiva_HallarValor(int[] vector, int indice, int m){
+    public static int funcion_Recursiva_HallarValor(double[] vector, int indice, double m){
         
         if (indice==vector.length)
         {
